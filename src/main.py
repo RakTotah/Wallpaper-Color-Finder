@@ -12,13 +12,14 @@ def greyscale(px, x ,y):
 
 ### Pixel utilities ###
 
-def mapPixel(image, func, show=False): # Maps a function on each pixel individually
+def mapPixel(image, func, showBefore=False, showAfter = False): # Maps a function on each pixel individually
     with Image.open(image) as im:
-        im.show()
+        if showBefore:
+            im.show()
         imageSize = im.size
         px = im.load()
         for x in range(imageSize[0]):
             for y in range(imageSize[1]):
                 func(px, x, y)
-        if show:
+        if showAfter:
             im.show()
